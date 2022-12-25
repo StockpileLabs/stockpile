@@ -1,0 +1,19 @@
+[package]
+name = "Stockpile"
+version = "0.1.0"
+description = "Funding Without Barriers"
+edition = "2022"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "stockpile"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.25.0"
