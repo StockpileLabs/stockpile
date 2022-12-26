@@ -4,8 +4,10 @@ use anchor_lang::solana_program::native_token::LAMPORTS_PER_SOL;
 use anchor_lang::solana_program::program::invoke;
 use anchor_lang::solana_program::system_instruction;
 use anchor_lang::solana_program::sysvar::clock;
+use anchor_lang::system_program;
+use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("STKqgkK72R1sJhV4BTipUcKkMFougtdTuDMr2RVubKr");
+declare_id!("7eyPRXnGPiDxCRNQV4KtJxUMbxBPnBktmKevnQ87xrW7");
 
 #[program]
 pub mod stockpile {
@@ -56,7 +58,7 @@ pub mod stockpile {
         fundraiser.image_link = image_link;
         fundraiser.contact_link = contact_link;
         fundraiser.website_link = website_link;
-        fundraiser.goal = (fundraiser_goal * 100).to_string();
+        fundraiser.goal = fundraiser_goal.to_string();
         fundraiser.contributions = 0;
         fundraiser.bump = *ctx.bumps.get("fundraiser").unwrap();
         fundraiser.time = Clock::get()?.unix_timestamp;
@@ -95,25 +97,31 @@ pub mod stockpile {
         Ok(())
     }
 
-    pub fn contribute(ctx: Context<Contribute>, amount: f64) -> Result<()> {
-        let fundraiser = &mut ctx.accounts.fundraiser;
+    pub fn contribute(ctx: Context<Contribute>, amount: u64) -> Result<()> {
         let contributor = &mut ctx.accounts.contributor;
         let user_account = &mut ctx.accounts.user_account;
 
-        let pseudo_lamports = amount * 100 as f64;
+        system_program::transfer(
+            CpiContext::new(
+                ctx.accounts.system_program.to_account_info(),
+                system_program::Transfer {
+                    from: ctx.accounts.contributor.to_account_info(),
+                    to: ctx.accounts.fundraiser.to_account_info(),
+                },
+            ),
+            amount,
+        )?;
 
-        fundraiser.raised += pseudo_lamports as u64;
-        fundraiser.contributions += 1;
+        ctx.accounts.fundraiser.raised += amount as u64;
+        ctx.accounts.fundraiser.contributions += 1;
         user_account.contributions += 1;
 
         Ok(())
     }
 
-    pub fn fundraiser_withdraw(ctx: Context<FundraiserWithdraw>, amount: f64) -> Result<()> {
+    pub fn fundraiser_withdraw(ctx: Context<FundraiserWithdraw>, amount: u64) -> Result<()> {
         let from: &mut Account<Fundraiser> = &mut ctx.accounts.fundraiser;
         let to: &mut UncheckedAccount = &mut ctx.accounts.beneficiary;
-
-        let _amount = amount * 1000000000 as f64;
 
         let fundraiser_goal = from.goal.parse::<u64>().unwrap();
 
@@ -125,12 +133,10 @@ pub mod stockpile {
             return Err(Errors::InvalidBeneficiary.into());
         }
 
-        **from.to_account_info().try_borrow_mut_lamports()? -= _amount as u64;
-        **to.try_borrow_mut_lamports()? += _amount as u64;
+        **from.to_account_info().try_borrow_mut_lamports()? -= amount as u64;
+        **to.try_borrow_mut_lamports()? += amount as u64;
 
-        let raised_subtract = amount * 100 as f64;
-
-        from.raised -= raised_subtract as u64;
+        from.raised -= amount;
 
         Ok(())
     }
@@ -263,7 +269,7 @@ pub mod stockpile {
     pub struct Contributor {
         pub contributor: Pubkey,
         pub username: String,
-        pub amount: f64,
+        pub amount: u64,
     }
 
     #[account]
@@ -275,8 +281,9 @@ pub mod stockpile {
     #[derive(AnchorSerialize, AnchorDeserialize, Clone, Copy)]
     pub enum Category {
         Individual,
-        NonProfit,
         Project,
+        Charity,
+        Misc,
     }
 
     #[error_code]
@@ -294,3 +301,4 @@ pub mod stockpile {
         #[msg("Invalid Beneficiary provided")]
         InvalidBeneficiary,
     }
+}
