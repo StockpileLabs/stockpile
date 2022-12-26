@@ -1,13 +1,9 @@
 #![feature(derive_default_enum)]
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::native_token::LAMPORTS_PER_SOL;
-use anchor_lang::solana_program::program::invoke;
-use anchor_lang::solana_program::system_instruction;
 use anchor_lang::solana_program::sysvar::clock;
 use anchor_lang::system_program;
-use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("7eyPRXnGPiDxCRNQV4KtJxUMbxBPnBktmKevnQ87xrW7");
+declare_id!("STK75brVWR2Cpwn7EApkKENXL1indSw3wfm5QyhtWUS");
 
 #[program]
 pub mod stockpile {
@@ -27,7 +23,6 @@ pub mod stockpile {
 
     pub fn update_user(ctx: Context<UpdateUser>, username: String) -> Result<()> {
         let user_account = &mut ctx.accounts.user_account;
-        let authority = &mut ctx.accounts.authority;
 
         user_account.username = username;
 
@@ -98,7 +93,6 @@ pub mod stockpile {
     }
 
     pub fn contribute(ctx: Context<Contribute>, amount: u64) -> Result<()> {
-        let contributor = &mut ctx.accounts.contributor;
         let user_account = &mut ctx.accounts.user_account;
 
         system_program::transfer(
