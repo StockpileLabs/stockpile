@@ -69,6 +69,7 @@ pub mod stockpile {
         contact_link: String,
         repo: String,
         goal: String,
+        is_matching_eligible: bool,
     ) -> Result<()> {
         create_grant_fundraiser(
             ctx,
@@ -79,6 +80,7 @@ pub mod stockpile {
             contact_link,
             repo,
             goal,
+            is_matching_eligible,
         );
     }
 

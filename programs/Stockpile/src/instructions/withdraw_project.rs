@@ -6,23 +6,23 @@ use crate::state::*;
 #[derive(Accounts)]
 pub struct WithdrawProject<'info> {
     #[account(mut, 
-        has_one = beneficiary, 
+        has_one = treasury, 
         seeds = [
             project.name.as_ref(), 
             user_account.key().as_ref(), 
-            beneficiary.key().as_ref()],
+            treasury.key().as_ref()],
         bump = project.bump)]
     pub project: Account<'info, Project>,
     #[account(mut)]
     pub user_account: Account<'info, User>,
-    #[account(mut, constraint = beneficiary.key() == project.beneficiary )]
-    pub beneficiary: UncheckedAccount<'info>,
+    #[account(mut, constraint = treasury.key() == project.treasury )]
+    pub treasury: UncheckedAccount<'info>,
     pub system_program: Program<'info, System>,
 }
 
 pub fn withdraw_project(ctx: Context<WithdrawProject>, amount: u64) -> Result<()> {
     let from: &mut Account<Project> = &mut ctx.accounts.project;
-    let to: &mut UncheckedAccount = &mut ctx.accounts.beneficiary;
+    let to: &mut UncheckedAccount = &mut ctx.accounts.treasury;
 
     let project_goal = from.goal.parse::<u64>().unwrap();
 
@@ -30,7 +30,7 @@ pub fn withdraw_project(ctx: Context<WithdrawProject>, amount: u64) -> Result<()
         return Err(Errors::GoalNotMet.into());
     }
 
-    if to.key() != from.beneficiary {
+    if to.key() != from.treasury {
         return Err(Errors::InvalidBeneficiary.into());
     }
 

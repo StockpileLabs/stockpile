@@ -34,6 +34,7 @@ pub fn create_grant_fundraiser(
     contact_link: String,
     repo: String,
     goal: String,
+    is_matching_eligible: bool,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let grant = &mut ctx.accounts.grant;
@@ -52,6 +53,7 @@ pub fn create_grant_fundraiser(
     grant.repo = repo;
     grant.goal = grant_goal.to_string();
     grant.contributions = 0;
+    grant.is_matching_eligible = is_matching_eligible;
     grant.bump = *ctx.bumps.get("grant").unwrap();
     grant.time = Clock::get()?.unix_timestamp;
     grant.category = "grant".to_string();

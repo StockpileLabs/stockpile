@@ -13,6 +13,7 @@ pub struct Grant {
     pub goal: String,
     pub raised: u64,
     pub contributions: u8,
+    pub is_matching_eligible: bool,
     pub bump: u8,
     pub time: i64,
     pub category: String,
