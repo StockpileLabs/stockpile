@@ -9,7 +9,6 @@ pub struct CreateUser<'info> {
             authority.key().as_ref()],
             bump,
             payer = authority,
-            has_one = authority,
             space = User::LEN,
         )]
     pub user_account: Account<'info, User>,

@@ -12,7 +12,6 @@ pub struct CreateProject<'info> {
             treasury.key().as_ref()], 
             bump, 
         payer = treasury, 
-        has_one = treasury,
         space = Project::LEN,
         )]
     pub project: Account<'info, Project>,

@@ -12,7 +12,6 @@ pub struct CreateCharity<'info> {
             beneficiary.key().as_ref()], 
             bump, 
         payer = beneficiary, 
-        has_one = beneficiary,
         space = Charity::LEN,
         )]
     pub charity: Account<'info, Charity>,

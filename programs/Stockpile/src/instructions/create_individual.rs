@@ -12,7 +12,6 @@ pub struct CreateIndividual<'info> {
             beneficiary.key().as_ref()], 
             bump, 
         payer = beneficiary, 
-        has_one = beneficiary,
         space = Individual::LEN,
         )]
     pub individual: Account<'info, Individual>,
