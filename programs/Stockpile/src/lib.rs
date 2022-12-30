@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::sysvar::clock;
-use anchor_lang::system_program;
+
+declare_id!("CYL7rA9TzCj2CmVWQhEZCNKAjV8JVcw31CFk71k2n7RJ");
 
 pub mod errors;
 pub mod instructions;
@@ -10,14 +10,14 @@ pub use errors::*;
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("4BjCifBQ6teHWgf3WmjJmR8n75oF1oWbdNFWQTvsz7o3");
-
 #[program]
 pub mod stockpile {
     use super::*;
 
     pub fn create_user(ctx: Context<CreateUser>, username: String) -> Result<()> {
-        create_user(ctx, username);
+        instructions::create_user(ctx, username).expect("Failed to create User.");
+
+        Ok(())
     }
 
     pub fn create_individual(
@@ -29,7 +29,7 @@ pub mod stockpile {
         contact_link: String,
         goal: String,
     ) -> Result<()> {
-        create_individual_fundraiser(
+        instructions::create_individual_fundraiser(
             ctx,
             name,
             description,
@@ -37,7 +37,10 @@ pub mod stockpile {
             website_link,
             contact_link,
             goal,
-        );
+        )
+        .expect("Failed to create individual fundraiser.");
+
+        Ok(())
     }
 
     pub fn create_project(
@@ -47,17 +50,22 @@ pub mod stockpile {
         image_link: String,
         website_link: String,
         contact_link: String,
+        repo: String,
         goal: String,
     ) -> Result<()> {
-        create_project_fundraiser(
+        instructions::create_project_fundraiser(
             ctx,
             name,
             description,
             image_link,
             website_link,
             contact_link,
+            repo,
             goal,
-        );
+        )
+        .expect("Failed to initialize project.");
+
+        Ok(())
     }
 
     pub fn create_grant(
@@ -71,7 +79,7 @@ pub mod stockpile {
         goal: String,
         is_matching_eligible: bool,
     ) -> Result<()> {
-        create_grant_fundraiser(
+        instructions::create_grant_fundraiser(
             ctx,
             name,
             description,
@@ -81,7 +89,10 @@ pub mod stockpile {
             repo,
             goal,
             is_matching_eligible,
-        );
+        )
+        .expect("Failed to initialize grant.");
+
+        Ok(())
     }
 
     pub fn create_charity(
@@ -94,7 +105,7 @@ pub mod stockpile {
         filing_link: String,
         goal: String,
     ) -> Result<()> {
-        create_charity_fundraiser(
+        instructions::create_charity_fundraiser(
             ctx,
             name,
             description,
@@ -103,23 +114,34 @@ pub mod stockpile {
             contact_link,
             filing_link,
             goal,
-        );
+        )
+        .expect("Failed to create charity fundraiser.");
+
+        Ok(())
     }
 
     pub fn contribute_charity(ctx: Context<ContributeCharity>, amount: u64) -> Result<()> {
-        contribute_charity(ctx, amount);
+        instructions::contribute_charity(ctx, amount).expect("Failed to contribute.");
+
+        Ok(())
     }
 
     pub fn contribute_grant(ctx: Context<ContributeGrant>, amount: u64) -> Result<()> {
-        contribute_grant(ctx, amount);
+        instructions::contribute_grant(ctx, amount).expect("Failed to contribute.");
+
+        Ok(())
     }
 
     pub fn contribute_individual(ctx: Context<ContributeIndividual>, amount: u64) -> Result<()> {
-        contribute_individual(ctx, amount);
+        instructions::contribute_individual(ctx, amount).expect("Failed to contribute.");
+
+        Ok(())
     }
 
     pub fn contribute_project(ctx: Context<ContributeProject>, amount: u64) -> Result<()> {
-        contribute_project(ctx, amount);
+        instructions::contribute_project(ctx, amount).expect("Failed to contribute.");
+
+        Ok(())
     }
 
     pub fn update_charity(
@@ -128,7 +150,10 @@ pub mod stockpile {
         website_link: String,
         contact_link: String,
     ) -> Result<()> {
-        update_charity(ctx, description, website_link, contact_link);
+        instructions::update_charity(ctx, description, website_link, contact_link)
+            .expect("Failed to update.");
+
+        Ok(())
     }
 
     pub fn update_grant(
@@ -137,7 +162,10 @@ pub mod stockpile {
         website_link: String,
         contact_link: String,
     ) -> Result<()> {
-        update_grant(ctx, description, website_link, contact_link);
+        instructions::update_grant(ctx, description, website_link, contact_link)
+            .expect("Failed to update.");
+
+        Ok(())
     }
 
     pub fn update_individual(
@@ -146,7 +174,10 @@ pub mod stockpile {
         website_link: String,
         contact_link: String,
     ) -> Result<()> {
-        update_individual(ctx, description, website_link, contact_link);
+        instructions::update_individual(ctx, description, website_link, contact_link)
+            .expect("Failed to update.");
+
+        Ok(())
     }
 
     pub fn update_project(
@@ -155,26 +186,39 @@ pub mod stockpile {
         website_link: String,
         contact_link: String,
     ) -> Result<()> {
-        update_project(ctx, description, website_link, contact_link);
+        instructions::update_project(ctx, description, website_link, contact_link)
+            .expect("Failed to update.");
+
+        Ok(())
     }
 
     pub fn update_user(ctx: Context<UpdateUser>, username: String) -> Result<()> {
-        update_user(ctx, username);
+        instructions::update_user(ctx, username).expect("Failed to update.");
+
+        Ok(())
     }
 
     pub fn withdraw_charity(ctx: Context<WithdrawCharity>, amount: u64) -> Result<()> {
-        withdraw_charity(ctx, amount);
+        instructions::withdraw_charity(ctx, amount).expect("Failed to withdraw.");
+
+        Ok(())
     }
 
     pub fn withdraw_grant(ctx: Context<WithdrawGrant>, amount: u64) -> Result<()> {
-        withdraw_grant(ctx, amount)
+        instructions::withdraw_grant(ctx, amount).expect("Failed to withdraw.");
+
+        Ok(())
     }
 
     pub fn withdraw_individual(ctx: Context<WithdrawIndividual>, amount: u64) -> Result<()> {
-        withdraw_individual(ctx, amount);
+        instructions::withdraw_individual(ctx, amount).expect("Failed to withdraw.");
+
+        Ok(())
     }
 
     pub fn withdraw_project(ctx: Context<WithdrawProject>, amount: u64) -> Result<()> {
-        withdraw_project(ctx, amount);
+        instructions::withdraw_project(ctx, amount).expect("Failed to withdraw.");
+
+        Ok(())
     }
 }

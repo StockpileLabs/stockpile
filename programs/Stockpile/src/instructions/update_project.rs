@@ -6,17 +6,17 @@ use crate::state::*;
 #[derive(Accounts)]
 pub struct UpdateProject<'info> {
     #[account(mut, 
-        has_one = beneficiary, 
+        has_one = treasury, 
         seeds = [
             project.name.as_ref(), 
             user_account.key().as_ref(), 
-            beneficiary.key().as_ref()],
+            treasury.key().as_ref()],
         bump = project.bump)]
     pub project: Account<'info, Project>,
     #[account(mut)]
     pub user_account: Account<'info, User>,
     #[account(mut)]
-    pub beneficiary: Signer<'info>,
+    pub treasury: Signer<'info>,
     pub system_program: Program<'info, System>,
 }
 
@@ -26,10 +26,10 @@ pub fn update_project(
     website_link: String,
     contact_link: String,
 ) -> Result<()> {
-    let beneficiary = &mut ctx.accounts.beneficiary;
+    let treasury = &mut ctx.accounts.treasury;
     let project = &mut ctx.accounts.project;
 
-    if beneficiary.key() != project.beneficiary {
+    if treasury.key() != project.treasury {
         return Err(Errors::InvalidBeneficiary.into());
     } else {
         if description.len() > 0 {

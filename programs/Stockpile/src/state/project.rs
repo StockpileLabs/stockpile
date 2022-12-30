@@ -10,6 +10,7 @@ pub struct Project {
     pub contact_link: String,
     pub website_link: String,
     pub raised: u64,
+    pub repo: String,
     pub goal: String,
     pub contributions: u8,
     pub bump: u8,
