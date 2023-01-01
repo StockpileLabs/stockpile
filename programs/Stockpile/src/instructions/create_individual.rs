@@ -28,7 +28,6 @@ pub fn create_individual_fundraiser(
     name: String,
     description: String,
     image_link: String,
-    website_link: String,
     contact_link: String,
     goal: String,
 ) -> Result<()> {
@@ -36,7 +35,7 @@ pub fn create_individual_fundraiser(
     let individual = &mut ctx.accounts.individual;
     let user_account = &mut ctx.accounts.user_account;
 
-    let individual_goal = goal.parse::<u64>().unwrap();
+    //let individual_goal = goal.parse::<u64>().unwrap();
 
     individual.raised = 0;
     individual.beneficiary = beneficiary.key();
@@ -45,8 +44,7 @@ pub fn create_individual_fundraiser(
     individual.description = description;
     individual.image_link = image_link;
     individual.contact_link = contact_link;
-    individual.website_link = website_link;
-    individual.goal = individual_goal.to_string();
+    individual.goal = goal;
     individual.contributions = 0;
     individual.bump = *ctx.bumps.get("individual").unwrap();
     individual.time = Clock::get()?.unix_timestamp;

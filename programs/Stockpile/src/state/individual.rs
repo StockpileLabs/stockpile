@@ -8,7 +8,6 @@ pub struct Individual {
     pub description: String,
     pub image_link: String,
     pub contact_link: String,
-    pub website_link: String,
     pub raised: u64,
     pub goal: String,
     pub contributions: u8,

@@ -25,7 +25,6 @@ pub mod stockpile {
         name: String,
         description: String,
         image_link: String,
-        website_link: String,
         contact_link: String,
         goal: String,
     ) -> Result<()> {
@@ -34,7 +33,6 @@ pub mod stockpile {
             name,
             description,
             image_link,
-            website_link,
             contact_link,
             goal,
         )
@@ -171,11 +169,9 @@ pub mod stockpile {
     pub fn update_individual(
         ctx: Context<UpdateIndividual>,
         description: String,
-        website_link: String,
         contact_link: String,
     ) -> Result<()> {
-        instructions::update_individual(ctx, description, website_link, contact_link)
-            .expect("Failed to update.");
+        instructions::update_individual(ctx, description, contact_link).expect("Failed to update.");
 
         Ok(())
     }

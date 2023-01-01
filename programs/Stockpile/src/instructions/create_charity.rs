@@ -37,7 +37,7 @@ pub fn create_charity_fundraiser(
     let charity = &mut ctx.accounts.charity;
     let user_account = &mut ctx.accounts.user_account;
 
-    let charity_goal = goal.parse::<u64>().unwrap();
+    //let charity_goal = goal.parse::<u64>().unwrap();
 
     charity.raised = 0;
     charity.beneficiary = beneficiary.key();
@@ -48,7 +48,7 @@ pub fn create_charity_fundraiser(
     charity.contact_link = contact_link;
     charity.website_link = website_link;
     charity.filing_link = filing_link;
-    charity.goal = charity_goal.to_string();
+    charity.goal = goal;
     charity.contributions = 0;
     charity.bump = *ctx.bumps.get("charity").unwrap();
     charity.time = Clock::get()?.unix_timestamp;

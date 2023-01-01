@@ -3,12 +3,11 @@ use anchor_lang::prelude::*;
 use crate::state::*;
 
 #[derive(Accounts)]
-#[instruction(name: String, repo: String)]
+#[instruction(name: String)]
 pub struct CreateGrant<'info> {
     #[account(init, 
         seeds = [
             name.as_ref(),
-            repo.as_ref(),
             user_account.key().as_ref(),
             beneficiary.key().as_ref()], 
             bump, 
@@ -39,7 +38,7 @@ pub fn create_grant_fundraiser(
     let grant = &mut ctx.accounts.grant;
     let user_account = &mut ctx.accounts.user_account;
 
-    let grant_goal = goal.parse::<u64>().unwrap();
+    //let grant_goal = goal.parse::<u64>().unwrap();
 
     grant.raised = 0;
     grant.beneficiary = beneficiary.key();
@@ -50,7 +49,7 @@ pub fn create_grant_fundraiser(
     grant.contact_link = contact_link;
     grant.website_link = website_link;
     grant.repo = repo;
-    grant.goal = grant_goal.to_string();
+    grant.goal = goal;
     grant.contributions = 0;
     grant.is_matching_eligible = is_matching_eligible;
     grant.bump = *ctx.bumps.get("grant").unwrap();

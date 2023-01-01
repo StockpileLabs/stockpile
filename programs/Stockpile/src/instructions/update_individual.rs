@@ -23,7 +23,6 @@ pub struct UpdateIndividual<'info> {
 pub fn update_individual(
     ctx: Context<UpdateIndividual>,
     description: String,
-    website_link: String,
     contact_link: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
@@ -40,9 +39,6 @@ pub fn update_individual(
             individual.contact_link = contact_link;
         }
 
-        if website_link.len() > 0 {
-            individual.website_link = website_link;
-        }
     }
 
     Ok(())

@@ -37,7 +37,7 @@ pub fn create_project_fundraiser(
     let project = &mut ctx.accounts.project;
     let user_account = &mut ctx.accounts.user_account;
 
-    let project_goal = goal.parse::<u64>().unwrap();
+    //let project_goal = goal.parse::<u64>().unwrap();
 
     project.raised = 0;
     project.treasury = treasury.key();
@@ -48,7 +48,7 @@ pub fn create_project_fundraiser(
     project.contact_link = contact_link;
     project.website_link = website_link;
     project.repo = repo;
-    project.goal = project_goal.to_string();
+    project.goal = goal;
     project.contributions = 0;
     project.bump = *ctx.bumps.get("project").unwrap();
     project.time = Clock::get()?.unix_timestamp;

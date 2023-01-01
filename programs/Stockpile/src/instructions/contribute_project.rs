@@ -8,9 +8,10 @@ use crate::state::*;
 pub struct ContributeProject<'info> {
     #[account(init,
     seeds = [
+        project.name.as_ref(),
         project.key().as_ref(),
         contributor.key().as_ref(),
-        amount.to_be_bytes().as_ref(),
+        (amount as u64).to_le_bytes().as_ref(),
     ],
     bump,
     payer = contributor,
