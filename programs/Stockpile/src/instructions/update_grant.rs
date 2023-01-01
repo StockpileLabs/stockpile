@@ -24,7 +24,9 @@ pub fn update_grant(
     ctx: Context<UpdateGrant>,
     description: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let grant = &mut ctx.accounts.grant;
@@ -36,12 +38,20 @@ pub fn update_grant(
             grant.description = description;
         }
 
-        if contact_link.len() > 0 {
-            grant.contact_link = contact_link;
-        }
-
         if website_link.len() > 0 {
             grant.website_link = website_link;
+        }
+
+        if twitter.len() > 0 {
+            grant.twitter = twitter;
+        }
+
+        if discord.len() > 0 {
+            grant.discord = discord;
+        }
+
+        if telegram.len() > 0 {
+            grant.telegram = telegram;
         }
     }
 

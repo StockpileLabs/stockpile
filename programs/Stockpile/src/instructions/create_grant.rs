@@ -29,7 +29,10 @@ pub fn create_grant_fundraiser(
     description: String,
     image_link: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
+    location: String,
     repo: String,
     goal: String,
     is_matching_eligible: bool,
@@ -46,8 +49,11 @@ pub fn create_grant_fundraiser(
     grant.name = name;
     grant.description = description;
     grant.image_link = image_link;
-    grant.contact_link = contact_link;
     grant.website_link = website_link;
+    grant.twitter = twitter;
+    grant.discord = discord;
+    grant.telegram = telegram;
+    grant.location = location;
     grant.repo = repo;
     grant.goal = goal;
     grant.contributions = 0;

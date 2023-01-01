@@ -24,7 +24,9 @@ pub fn update_project(
     ctx: Context<UpdateProject>,
     description: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
 ) -> Result<()> {
     let treasury = &mut ctx.accounts.treasury;
     let project = &mut ctx.accounts.project;
@@ -36,12 +38,20 @@ pub fn update_project(
             project.description = description;
         }
 
-        if contact_link.len() > 0 {
-            project.contact_link = contact_link;
-        }
-
         if website_link.len() > 0 {
             project.website_link = website_link;
+        }
+
+        if twitter.len() > 0 {
+            project.twitter = twitter;
+        }
+
+        if telegram.len() > 0 {
+            project.telegram = telegram;
+        }
+
+        if discord.len() > 0 {
+            project.discord = discord;
         }
     }
 

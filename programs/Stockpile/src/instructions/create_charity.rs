@@ -29,7 +29,10 @@ pub fn create_charity_fundraiser(
     description: String,
     image_link: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
+    location: String,
     filing_link: String,
     goal: String,
 ) -> Result<()> {
@@ -45,7 +48,10 @@ pub fn create_charity_fundraiser(
     charity.name = name;
     charity.description = description;
     charity.image_link = image_link;
-    charity.contact_link = contact_link;
+    charity.twitter = twitter;
+    charity.discord = discord;
+    charity.telegram = telegram;
+    charity.location = location;
     charity.website_link = website_link;
     charity.filing_link = filing_link;
     charity.goal = goal;

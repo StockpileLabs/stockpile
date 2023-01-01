@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("7BDAh8serYRocEHJmjYgPRzqsYvfA9JYrEEfNv1TZCnh");
+declare_id!("48SQXcY7zxJhKdSLNNfh5pou9zwmJLnViFmAmmEKxrtt");
 
 pub mod errors;
 pub mod instructions;
@@ -25,7 +25,10 @@ pub mod stockpile {
         name: String,
         description: String,
         image_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
+        location: String,
         goal: String,
     ) -> Result<()> {
         instructions::create_individual_fundraiser(
@@ -33,7 +36,10 @@ pub mod stockpile {
             name,
             description,
             image_link,
-            contact_link,
+            twitter,
+            discord,
+            telegram,
+            location,
             goal,
         )
         .expect("Failed to create individual fundraiser.");
@@ -47,7 +53,10 @@ pub mod stockpile {
         description: String,
         image_link: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
+        location: String,
         repo: String,
         goal: String,
     ) -> Result<()> {
@@ -57,7 +66,10 @@ pub mod stockpile {
             description,
             image_link,
             website_link,
-            contact_link,
+            twitter,
+            discord,
+            telegram,
+            location,
             repo,
             goal,
         )
@@ -72,7 +84,10 @@ pub mod stockpile {
         description: String,
         image_link: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
+        location: String,
         repo: String,
         goal: String,
         is_matching_eligible: bool,
@@ -83,7 +98,10 @@ pub mod stockpile {
             description,
             image_link,
             website_link,
-            contact_link,
+            twitter,
+            discord,
+            telegram,
+            location,
             repo,
             goal,
             is_matching_eligible,
@@ -99,7 +117,10 @@ pub mod stockpile {
         description: String,
         image_link: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
+        location: String,
         filing_link: String,
         goal: String,
     ) -> Result<()> {
@@ -109,7 +130,10 @@ pub mod stockpile {
             description,
             image_link,
             website_link,
-            contact_link,
+            twitter,
+            discord,
+            telegram,
+            location,
             filing_link,
             goal,
         )
@@ -146,9 +170,11 @@ pub mod stockpile {
         ctx: Context<UpdateCharity>,
         description: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
     ) -> Result<()> {
-        instructions::update_charity(ctx, description, website_link, contact_link)
+        instructions::update_charity(ctx, description, website_link, twitter, discord, telegram)
             .expect("Failed to update.");
 
         Ok(())
@@ -158,9 +184,11 @@ pub mod stockpile {
         ctx: Context<UpdateGrant>,
         description: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
     ) -> Result<()> {
-        instructions::update_grant(ctx, description, website_link, contact_link)
+        instructions::update_grant(ctx, description, website_link, twitter, discord, telegram)
             .expect("Failed to update.");
 
         Ok(())
@@ -169,9 +197,12 @@ pub mod stockpile {
     pub fn update_individual(
         ctx: Context<UpdateIndividual>,
         description: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
     ) -> Result<()> {
-        instructions::update_individual(ctx, description, contact_link).expect("Failed to update.");
+        instructions::update_individual(ctx, description, twitter, discord, telegram)
+            .expect("Failed to update.");
 
         Ok(())
     }
@@ -180,9 +211,11 @@ pub mod stockpile {
         ctx: Context<UpdateProject>,
         description: String,
         website_link: String,
-        contact_link: String,
+        twitter: String,
+        discord: String,
+        telegram: String,
     ) -> Result<()> {
-        instructions::update_project(ctx, description, website_link, contact_link)
+        instructions::update_project(ctx, description, website_link, twitter, discord, telegram)
             .expect("Failed to update.");
 
         Ok(())

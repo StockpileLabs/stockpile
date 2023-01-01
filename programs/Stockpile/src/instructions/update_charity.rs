@@ -24,7 +24,9 @@ pub fn update_charity(
     ctx: Context<UpdateCharity>,
     description: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let charity = &mut ctx.accounts.charity;
@@ -36,12 +38,21 @@ pub fn update_charity(
             charity.description = description;
         }
 
-        if contact_link.len() > 0 {
-            charity.contact_link = contact_link;
-        }
-
         if website_link.len() > 0 {
             charity.website_link = website_link;
+        }
+
+        
+        if twitter.len() > 0 {
+            charity.twitter = twitter;
+        }
+
+        if discord.len() > 0 {
+            charity.discord = discord;
+        }
+
+        if telegram.len() > 0 {
+            charity.telegram = telegram;
         }
     }
 

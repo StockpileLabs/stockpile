@@ -29,7 +29,10 @@ pub fn create_project_fundraiser(
     description: String,
     image_link: String,
     website_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
+    location: String,
     repo: String,
     goal: String,
 ) -> Result<()> {
@@ -45,8 +48,11 @@ pub fn create_project_fundraiser(
     project.name = name;
     project.description = description;
     project.image_link = image_link;
-    project.contact_link = contact_link;
     project.website_link = website_link;
+    project.twitter = twitter;
+    project.discord = discord;
+    project.telegram = telegram;
+    project.location = location;
     project.repo = repo;
     project.goal = goal;
     project.contributions = 0;

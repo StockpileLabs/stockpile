@@ -28,7 +28,10 @@ pub fn create_individual_fundraiser(
     name: String,
     description: String,
     image_link: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
+    location: String,
     goal: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
@@ -43,7 +46,10 @@ pub fn create_individual_fundraiser(
     individual.name = name;
     individual.description = description;
     individual.image_link = image_link;
-    individual.contact_link = contact_link;
+    individual.twitter = twitter;
+    individual.telegram = telegram;
+    individual.discord = discord;
+    individual.location = location;
     individual.goal = goal;
     individual.contributions = 0;
     individual.bump = *ctx.bumps.get("individual").unwrap();

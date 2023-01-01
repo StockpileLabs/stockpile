@@ -23,7 +23,9 @@ pub struct UpdateIndividual<'info> {
 pub fn update_individual(
     ctx: Context<UpdateIndividual>,
     description: String,
-    contact_link: String,
+    twitter: String,
+    discord: String,
+    telegram: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let individual = &mut ctx.accounts.individual;
@@ -35,8 +37,16 @@ pub fn update_individual(
             individual.description = description;
         }
 
-        if contact_link.len() > 0 {
-            individual.contact_link = contact_link;
+        if twitter.len() > 0 {
+            individual.twitter = twitter;
+        }
+
+        if telegram.len() > 0 {
+            individual.telegram = telegram;
+        }
+
+        if discord.len() > 0 {
+            individual.discord = discord;
         }
 
     }
