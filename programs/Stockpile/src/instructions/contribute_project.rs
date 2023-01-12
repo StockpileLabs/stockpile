@@ -31,6 +31,7 @@ pub struct ContributeProject<'info> {
 
 pub fn contribute_project(ctx: Context<ContributeProject>, amount: u64) -> Result<()> {
     let user_account = &mut ctx.accounts.user_account;
+    let info_acc = &mut ctx.accounts.info_acc;
 
     system_program::transfer(
         CpiContext::new(
@@ -42,6 +43,10 @@ pub fn contribute_project(ctx: Context<ContributeProject>, amount: u64) -> Resul
         ),
         amount,
     )?;
+
+    info_acc.amount = amount as u64;
+    info_acc.contributor = ctx.accounts.contributor.key();
+    info_acc.fundraiser = ctx.accounts.project.key();
 
     ctx.accounts.project.raised += amount as u64;
     ctx.accounts.project.contributions += 1;
