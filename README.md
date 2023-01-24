@@ -8,9 +8,10 @@ Stockpile is a web3 protocol designed to facilitate numerous different types of 
 
 ## Project Goals
 
-Stockpile is currently undergoing closed beta and will be available to the public at a later date within the near future. In the meantime, the project plans to accomplish the following:
+Stockpile is currently live on the devnet and will be available on mainnet at a later date within the near future. In the meantime, the project plans to accomplish the following:
 
 - Grant style funding
+- Embedded Bounties
 - Token-Enabled Project Fundraisers
 - Yield Contribution
 - Javascript/Typescript SDK
