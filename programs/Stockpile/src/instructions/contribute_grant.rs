@@ -6,18 +6,6 @@ use crate::state::*;
 #[derive(Accounts)]
 #[instruction(amount: u64)]
 pub struct ContributeGrant<'info> {
-    #[account(init,
-    seeds = [
-        grant.name.as_ref(),
-        grant.key().as_ref(),
-        contributor.key().as_ref(),
-        (amount as u64).to_le_bytes().as_ref(),
-    ],
-    bump,
-    payer = contributor,
-    space = 8 + 8 + 32 + 32,
-     )]
-    pub info_acc: Account<'info, Info>,
     #[account(mut)]
     pub grant: Account<'info, Grant>,
     #[account(mut)]
@@ -31,7 +19,6 @@ pub struct ContributeGrant<'info> {
 
 pub fn contribute_grant(ctx: Context<ContributeGrant>, amount: u64) -> Result<()> {
     let user_account = &mut ctx.accounts.user_account;
-    let info_acc = &mut ctx.accounts.info_acc;
 
     system_program::transfer(
         CpiContext::new(
@@ -43,10 +30,6 @@ pub fn contribute_grant(ctx: Context<ContributeGrant>, amount: u64) -> Result<()
         ),
         amount,
     )?;
-
-    info_acc.amount = amount as u64;
-    info_acc.contributor = ctx.accounts.contributor.key();
-    info_acc.fundraiser = ctx.accounts.grant.key();
 
     ctx.accounts.grant.raised += amount as u64;
     ctx.accounts.grant.contributions += 1;
