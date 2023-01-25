@@ -3,7 +3,15 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::sysvar::clock;
 use anchor_lang::system_program;
 
-declare_id!("STK75brVWR2Cpwn7EApkKENXL1indSw3wfm5QyhtWUS");
+declare_id!("CVhwkyv1yyHVwTSdTmbHSZ7HG5zNjBwxYP6gaJiX4FpA");
+
+pub mod errors;
+pub mod instructions;
+pub mod state;
+
+pub use errors::*;
+pub use instructions::*;
+pub use state::*;
 
 #[program]
 pub mod stockpile {

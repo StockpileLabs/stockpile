@@ -4,7 +4,7 @@ skip-lint = false
 [programs.localnet]
 stockpile = "STKqgkK72R1sJhV4BTipUcKkMFougtdTuDMr2RVubKr"
 [programs.devnet]
-stockpile = "STKqgkK72R1sJhV4BTipUcKkMFougtdTuDMr2RVubKr"
+stockpile = "CVhwkyv1yyHVwTSdTmbHSZ7HG5zNjBwxYP6gaJiX4FpA"
 
 [registry]
 url = "https://api.apr.dev"
