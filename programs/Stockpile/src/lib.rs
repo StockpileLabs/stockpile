@@ -25,7 +25,7 @@
 use anchor_lang::prelude::*;
 //use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("STKYsPcbyMG1uHrMX56t1aDqSv4e5qGt9DMk693BCeZ");
+declare_id!("CVhwkyv1yyHVwTSdTmbHSZ7HG5zNjBwxYP6gaJiX4FpA");
 
 pub mod errors;
 pub mod instructions;
