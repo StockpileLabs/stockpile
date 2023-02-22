@@ -33,6 +33,7 @@ pub fn contribute_individual(ctx: Context<ContributeIndividual>, amount: u64) ->
 
     ctx.accounts.individual.raised += amount as u64;
     ctx.accounts.individual.contributions += 1;
+    ctx.accounts.individual.balance += amount as u64;
     user_account.contributions += 1;
 
     Ok(())

@@ -55,5 +55,7 @@ pub fn update_grant(
         }
     }
 
+    grant.last_updated = Clock::get()?.unix_timestamp;
+
     Ok(())
 }

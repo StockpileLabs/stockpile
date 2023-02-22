@@ -55,5 +55,7 @@ pub fn update_project(
         }
     }
 
+    project.last_updated = Clock::get()?.unix_timestamp;
+
     Ok(())
 }

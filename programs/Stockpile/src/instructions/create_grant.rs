@@ -57,6 +57,8 @@ pub fn create_grant_fundraiser(
     grant.repo = repo;
     grant.goal = goal;
     grant.contributions = 0;
+    grant.balance = 0;
+    grant.last_updated = 0;
     grant.is_matching_eligible = is_matching_eligible;
     grant.bump = *ctx.bumps.get("grant").unwrap();
     grant.time = Clock::get()?.unix_timestamp;

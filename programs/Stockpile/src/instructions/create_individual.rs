@@ -52,6 +52,8 @@ pub fn create_individual_fundraiser(
     individual.location = location;
     individual.goal = goal;
     individual.contributions = 0;
+    individual.balance = 0;
+    individual.last_updated = 0;
     individual.bump = *ctx.bumps.get("individual").unwrap();
     individual.time = Clock::get()?.unix_timestamp;
     individual.category = "individual".to_string();

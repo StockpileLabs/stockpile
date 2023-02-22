@@ -56,6 +56,8 @@ pub fn create_project_fundraiser(
     project.repo = repo;
     project.goal = goal;
     project.contributions = 0;
+    project.balance = 0;
+    project.last_updated = 0;
     project.bump = *ctx.bumps.get("project").unwrap();
     project.time = Clock::get()?.unix_timestamp;
     project.category = "project".to_string();

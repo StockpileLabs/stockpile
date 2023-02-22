@@ -33,6 +33,7 @@ pub fn contribute_project(ctx: Context<ContributeProject>, amount: u64) -> Resul
 
     ctx.accounts.project.raised += amount as u64;
     ctx.accounts.project.contributions += 1;
+    ctx.accounts.project.balance += amount as u64;
     user_account.contributions += 1;
 
     Ok(())

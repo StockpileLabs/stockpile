@@ -56,6 +56,7 @@ pub fn create_charity_fundraiser(
     charity.filing_link = filing_link;
     charity.goal = goal;
     charity.contributions = 0;
+    charity.balance = 0;
     charity.bump = *ctx.bumps.get("charity").unwrap();
     charity.time = Clock::get()?.unix_timestamp;
     charity.category = "charity".to_string();

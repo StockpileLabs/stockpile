@@ -56,5 +56,7 @@ pub fn update_charity(
         }
     }
 
+    charity.last_updated = Clock::get()?.unix_timestamp;
+
     Ok(())
 }

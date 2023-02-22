@@ -16,6 +16,7 @@ pub struct WithdrawProject<'info> {
     #[account(mut)]
     pub user_account: Account<'info, User>,
     #[account(mut, constraint = treasury.key() == project.treasury )]
+    /// CHECK: This is not dangerous because we don't read or write from this account
     pub treasury: UncheckedAccount<'info>,
     pub system_program: Program<'info, System>,
 }
@@ -37,7 +38,7 @@ pub fn withdraw_project(ctx: Context<WithdrawProject>, amount: u64) -> Result<()
     **from.to_account_info().try_borrow_mut_lamports()? -= amount as u64;
     **to.try_borrow_mut_lamports()? += amount as u64;
 
-    from.raised -= amount;
+    from.balance -= amount;
 
     Ok(())
 }

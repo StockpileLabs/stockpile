@@ -33,6 +33,7 @@ pub fn contribute_grant(ctx: Context<ContributeGrant>, amount: u64) -> Result<()
 
     ctx.accounts.grant.raised += amount as u64;
     ctx.accounts.grant.contributions += 1;
+    ctx.accounts.grant.balance += amount as u64;
     user_account.contributions += 1;
 
     Ok(())

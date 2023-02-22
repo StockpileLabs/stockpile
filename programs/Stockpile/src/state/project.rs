@@ -19,6 +19,8 @@ pub struct Project {
     pub bump: u8,
     pub time: i64,
     pub category: String,
+    pub balance: u64,
+    pub last_updated: i64,
 }
 
 impl Project {

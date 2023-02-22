@@ -33,6 +33,7 @@ pub fn contribute_charity(ctx: Context<ContributeCharity>, amount: u64) -> Resul
 
     ctx.accounts.charity.raised += amount as u64;
     ctx.accounts.charity.contributions += 1;
+    ctx.accounts.charity.balance += amount as u64;
     user_account.contributions += 1;
 
     Ok(())
