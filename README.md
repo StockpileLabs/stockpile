@@ -1,22 +1,27 @@
 # Stockpile
 
-A global contribution engine for Web3, powered by Solana. Funding, without barriers.
+Funding Without Barriers. 
 
-## What is Stockpile?
-
-Stockpile is a web3 protocol designed to facilitate numerous different types of crowdfunding in a permissionless manner. The protocol leverages the Solana blockchain to provide quick, easy, and composable crowdfunding experience to meet the needs of many digital fundraisers. 
+Create and contribute to decentralized crowdfunds powered by Solana. Take advantage of the fastest blockchain available to fund your own cause, charity, or project in no time at all. Engage with your community by distributing commemorative NFTs to contributors of your project
 
 ## Project Goals
 
-Stockpile is currently live on the devnet and will be available on mainnet at a later date within the near future. In the meantime, the project plans to accomplish the following:
+Stockpile is currently live on the devnet and will be available on mainnet at a later date within the near future. In the meantime, here's our roadmap for this repository:
 
-- Grant style funding
+- Data compression
+- Quadratic Funding
+- Generative Multi-Sig Beneficiaries
 - Embedded Bounties
-- Token-Enabled Project Fundraisers
 - Yield Contribution
 - Javascript/Typescript SDK
-- Integrated on/off-ramps for Web2 native users
+- Fully configurable "Misc" fundraiser type
 
 ## Why?
 
-Formerly Mobius Protocol, the Stockpile project was conceptualized during the Freedom Convoy. Our team believes in freedom of transaction, and seeing how the events unfolded for the convoy inspired us to take a different stance on the traditional crowdfunding model. We sought to right the wrongs of platforms GoFundMe that deliberately censor legitamite fundraisers for disagreements in a ToS sheet. The result, is the Stockpile project. 
+Formerly Mobius Protocol, the Stockpile project was conceptualized during the Freedom Convoy, and their situation with GoFundMe and the Canadian Government. Seeing similar events unfold throughout 2022 energized us to build the premier crowdfunding tool for Web3: free of censorship, and fully verifiable. As we built the platform, we've recognized the potential for Stockpile to be something more than a platform or primitive alone. Our vision is a robust global funding engine that can serve the needs of many, whether it be through our own platform, composability with another protocol, or tools for other use-cases built by other developers.
+
+Here we are in 2023, pushing to make that vision a reality by working with the brightest individuals, best charities, and disruptive projects on Solana. 
+
+## Awards & Participation
+
+:star: 3rd Place in the Reputation Track at Solana Sandstorm 2023
