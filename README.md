@@ -1,4 +1,4 @@
-# Stockpile
+# Stockpile [![GPL 3.0 License](https://img.shields.io/badge/license-GPL3.0-orange.svg)](https://opensource.org/license/gpl-3-0/)
 
 Funding Without Barriers. 
 
