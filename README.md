@@ -1,8 +1,8 @@
-# Stockpile [![GPL 3.0 License](https://img.shields.io/badge/license-GPL3.0-orange.svg)](https://opensource.org/license/gpl-3-0/)
+# Stockpile	:package: <br> [![GPL 3.0 License](https://img.shields.io/badge/license-GPL3.0-orange.svg)](https://opensource.org/license/gpl-3-0/) <a href="https://stockpile.pro" target="blank">[![Website](https://img.shields.io/badge/Website-orange.svg)](https://stockpile.pro)</a> <a href="https://stockpile.pro" target="blank"> [![Docs](https://img.shields.io/badge/Docs-orange.svg)](https://docs.stockpile.pro)</a> <br> <img align="center" src="https://i.imgur.com/nmjGxMB.png" width="700">
 
 Funding Without Barriers. 
 
-Create and contribute to decentralized crowdfunds powered by Solana. Take advantage of the fastest blockchain available to fund your own cause, charity, or project in no time at all. Engage with your community by distributing commemorative NFTs to contributors of your project
+Create and contribute to decentralized crowdfunds powered by Solana. Take advantage of the fastest blockchain available to fund your own cause, charity, or project in no time at all. Engage with your community through discussion boards and distribution of commemorative, reputation-based NFTs to contributors of your project. 
 
 ## Project Goals
 
