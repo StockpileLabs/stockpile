@@ -27,6 +27,10 @@ pub fn withdraw_grant(ctx: Context<WithdrawGrant>, amount: u64) -> Result<()> {
 
     let grant_goal = from.goal.parse::<u64>().unwrap();
 
+    if from.balance < amount {
+        return Err(Errors::AmountTooLarge.into());
+    }
+
     if from.raised < grant_goal {
         return Err(Errors::GoalNotMet.into());
     }

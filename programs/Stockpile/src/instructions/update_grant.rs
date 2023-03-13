@@ -26,7 +26,8 @@ pub fn update_grant(
     website_link: String,
     twitter: String,
     discord: String,
-    telegram: String
+    telegram: String,
+    repo: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let grant = &mut ctx.accounts.grant;
@@ -52,6 +53,10 @@ pub fn update_grant(
 
         if telegram.len() > 0 {
             grant.telegram = telegram;
+        }
+
+        if repo.len() > 0 {
+            grant.repo = repo;
         }
     }
 

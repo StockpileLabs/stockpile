@@ -27,6 +27,10 @@ pub fn withdraw_individual(ctx: Context<WithdrawIndividual>, amount: u64) -> Res
 
     let individual_goal = from.goal.parse::<u64>().unwrap();
 
+    if from.balance < amount {
+        return Err(Errors::AmountTooLarge.into());
+    }
+
     if from.raised < individual_goal {
         return Err(Errors::GoalNotMet.into());
     }

@@ -26,7 +26,8 @@ pub fn update_charity(
     website_link: String,
     twitter: String,
     discord: String,
-    telegram: String
+    telegram: String,
+    filing: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let charity = &mut ctx.accounts.charity;
@@ -53,6 +54,10 @@ pub fn update_charity(
 
         if telegram.len() > 0 {
             charity.telegram = telegram;
+        }
+
+        if filing.len() > 0 {
+            charity.filing_link = filing;
         }
     }
 

@@ -27,6 +27,10 @@ pub fn withdraw_project(ctx: Context<WithdrawProject>, amount: u64) -> Result<()
 
     let project_goal = from.goal.parse::<u64>().unwrap();
 
+    if from.balance < amount {
+        return Err(Errors::AmountTooLarge.into());
+    }
+
     if from.raised < project_goal {
         return Err(Errors::GoalNotMet.into());
     }

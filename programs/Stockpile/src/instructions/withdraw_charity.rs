@@ -27,6 +27,10 @@ pub fn withdraw_charity(ctx: Context<WithdrawCharity>, amount: u64) -> Result<()
 
     let charity_goal = from.goal.parse::<u64>().unwrap();
 
+    if from.balance < amount {
+        return Err(Errors::AmountTooLarge.into());
+    }
+
     if from.raised < charity_goal {
         return Err(Errors::GoalNotMet.into());
     }

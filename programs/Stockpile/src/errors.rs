@@ -2,9 +2,9 @@ use anchor_lang::prelude::*;
 
 #[error_code]
 pub enum Errors {
-    #[msg("Fundraiser Name is too long")]
+    #[msg("Fundraiser name is too long")]
     NameTooLong,
-    #[msg("Description is too long")]
+    #[msg("Fundraiser description is too long")]
     DescriptionTooLong,
     #[msg("Invalid Authority to Update")]
     InvalidAuthority,

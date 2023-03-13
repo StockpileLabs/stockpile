@@ -34,7 +34,7 @@ This code is currently unaudited, while reusing and duplication are allowed, ple
 use anchor_lang::prelude::*;
 //use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("CVhwkyv1yyHVwTSdTmbHSZ7HG5zNjBwxYP6gaJiX4FpA");
+declare_id!("2V5SzQwXGMZCaK25kuv7xvbah4GVA7h7i15CEZpCPgKQ");
 
 pub mod errors;
 pub mod instructions;
@@ -207,8 +207,9 @@ pub mod stockpile {
         twitter: String,
         discord: String,
         telegram: String,
+        filing: String,
     ) -> Result<()> {
-        instructions::update_charity(ctx, description, website_link, twitter, discord, telegram)
+        instructions::update_charity(ctx, description, website_link, twitter, discord, telegram, filing)
             .expect("Failed to update.");
 
         Ok(())
@@ -221,8 +222,9 @@ pub mod stockpile {
         twitter: String,
         discord: String,
         telegram: String,
+        repo: String,
     ) -> Result<()> {
-        instructions::update_grant(ctx, description, website_link, twitter, discord, telegram)
+        instructions::update_grant(ctx, description, website_link, twitter, discord, telegram, repo)
             .expect("Failed to update.");
 
         Ok(())
@@ -248,8 +250,9 @@ pub mod stockpile {
         twitter: String,
         discord: String,
         telegram: String,
+        repo: String,
     ) -> Result<()> {
-        instructions::update_project(ctx, description, website_link, twitter, discord, telegram)
+        instructions::update_project(ctx, description, website_link, twitter, discord, telegram, repo)
             .expect("Failed to update.");
 
         Ok(())

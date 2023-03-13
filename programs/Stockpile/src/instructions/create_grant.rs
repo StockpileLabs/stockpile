@@ -1,5 +1,6 @@
 use anchor_lang::prelude::*;
 
+use crate::errors::*;
 use crate::state::*;
 
 #[derive(Accounts)]
@@ -42,6 +43,14 @@ pub fn create_grant_fundraiser(
     let user_account = &mut ctx.accounts.user_account;
 
     //let grant_goal = goal.parse::<u64>().unwrap();
+
+    if name.len() > 35 {
+        return Err(Errors::NameTooLong.into());
+    }
+
+    if description.len() > 575 {
+        return Err(Errors::DescriptionTooLong.into());
+    }
 
     grant.raised = 0;
     grant.beneficiary = beneficiary.key();

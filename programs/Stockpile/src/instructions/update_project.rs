@@ -27,6 +27,7 @@ pub fn update_project(
     twitter: String,
     discord: String,
     telegram: String,
+    repo: String,
 ) -> Result<()> {
     let treasury = &mut ctx.accounts.treasury;
     let project = &mut ctx.accounts.project;
@@ -52,6 +53,10 @@ pub fn update_project(
 
         if discord.len() > 0 {
             project.discord = discord;
+        }
+
+        if repo.len() > 0 {
+            project.repo = repo;
         }
     }
 
