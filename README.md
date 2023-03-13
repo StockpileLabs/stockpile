@@ -2,18 +2,19 @@
 
 Funding Without Barriers. 
 
-Create and contribute to decentralized crowdfunds powered by Solana. Take advantage of the fastest blockchain available to fund your own cause, charity, or project in no time at all. Engage with your community through discussion boards and distribution of commemorative, reputation-based NFTs to contributors of your project. 
+Create and contribute to decentralized crowdfunds powered by Solana. Take advantage of the fastest blockchain available to fund your own cause, charity, or project, and take part in a community dedicated to helping people. Track reputation through commemorative NFTs that mirror inputs like GitHub, and be sure the fundraiser you're contributing to is really building.
 
 ## Project Goals
 
 Stockpile is currently live on the devnet and will be available on mainnet at a later date within the near future. In the meantime, here's our roadmap for this repository:
 
 - Data compression
+- Javascript/Typescript SDK
+- Minimal Anti Collusion Infrastructure
 - Quadratic Funding
 - Generative Multi-Sig Beneficiaries
-- Embedded Bounties
+- Embedded Job-Postings / Bounties
 - Yield Contribution
-- Javascript/Typescript SDK
 - Fully configurable "Misc" fundraiser type
 
 ## Why?
