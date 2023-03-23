@@ -5,12 +5,14 @@ skip-lint = false
 stockpile = "2V5SzQwXGMZCaK25kuv7xvbah4GVA7h7i15CEZpCPgKQ"
 [programs.devnet]
 stockpile = "2V5SzQwXGMZCaK25kuv7xvbah4GVA7h7i15CEZpCPgKQ"
+[programs.mainnet]
+stockpile = "7XajpmvbZwBkGg9Rrz9fb8iHdy1uWhiSVwVsdrGUSk7P"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "mainnet"
 wallet = "/target/deploy/stockpile-keypair.json"
 
 [scripts]

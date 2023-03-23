@@ -34,7 +34,7 @@ This code is currently unaudited, while reusing and duplication are allowed, ple
 use anchor_lang::prelude::*;
 //use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("2V5SzQwXGMZCaK25kuv7xvbah4GVA7h7i15CEZpCPgKQ");
+declare_id!("7XajpmvbZwBkGg9Rrz9fb8iHdy1uWhiSVwVsdrGUSk7P");
 
 pub mod errors;
 pub mod instructions;
@@ -48,8 +48,8 @@ pub use state::*;
 pub mod stockpile {
     use super::*;
 
-    pub fn create_user(ctx: Context<CreateUser>, username: String) -> Result<()> {
-        instructions::create_user(ctx, username).expect("Failed to create User.");
+    pub fn create_user(ctx: Context<CreateUser>, username: String, image: String) -> Result<()> {
+        instructions::create_user(ctx, username, image).expect("Failed to create User.");
 
         Ok(())
     }
@@ -208,9 +208,19 @@ pub mod stockpile {
         discord: String,
         telegram: String,
         filing: String,
+        image: String,
     ) -> Result<()> {
-        instructions::update_charity(ctx, description, website_link, twitter, discord, telegram, filing)
-            .expect("Failed to update.");
+        instructions::update_charity(
+            ctx,
+            description,
+            website_link,
+            twitter,
+            discord,
+            telegram,
+            filing,
+            image,
+        )
+        .expect("Failed to update.");
 
         Ok(())
     }
@@ -223,9 +233,19 @@ pub mod stockpile {
         discord: String,
         telegram: String,
         repo: String,
+        image: String,
     ) -> Result<()> {
-        instructions::update_grant(ctx, description, website_link, twitter, discord, telegram, repo)
-            .expect("Failed to update.");
+        instructions::update_grant(
+            ctx,
+            description,
+            website_link,
+            twitter,
+            discord,
+            telegram,
+            repo,
+            image,
+        )
+        .expect("Failed to update.");
 
         Ok(())
     }
@@ -236,8 +256,9 @@ pub mod stockpile {
         twitter: String,
         discord: String,
         telegram: String,
+        image: String,
     ) -> Result<()> {
-        instructions::update_individual(ctx, description, twitter, discord, telegram)
+        instructions::update_individual(ctx, description, twitter, discord, telegram, image)
             .expect("Failed to update.");
 
         Ok(())
@@ -251,15 +272,25 @@ pub mod stockpile {
         discord: String,
         telegram: String,
         repo: String,
+        image: String,
     ) -> Result<()> {
-        instructions::update_project(ctx, description, website_link, twitter, discord, telegram, repo)
-            .expect("Failed to update.");
+        instructions::update_project(
+            ctx,
+            description,
+            website_link,
+            twitter,
+            discord,
+            telegram,
+            repo,
+            image,
+        )
+        .expect("Failed to update.");
 
         Ok(())
     }
 
-    pub fn update_user(ctx: Context<UpdateUser>, username: String) -> Result<()> {
-        instructions::update_user(ctx, username).expect("Failed to update.");
+    pub fn update_user(ctx: Context<UpdateUser>, username: String, image: String) -> Result<()> {
+        instructions::update_user(ctx, username, image).expect("Failed to update.");
 
         Ok(())
     }

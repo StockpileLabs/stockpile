@@ -17,7 +17,7 @@ pub struct CreateUser<'info> {
     pub system_program: Program<'info, System>,
 }
 
-pub fn create_user(ctx: Context<CreateUser>, username: String) -> Result<()> {
+pub fn create_user(ctx: Context<CreateUser>, username: String, image: String) -> Result<()> {
     let user_account = &mut ctx.accounts.user_account;
     let authority = &mut ctx.accounts.authority;
 
@@ -25,6 +25,7 @@ pub fn create_user(ctx: Context<CreateUser>, username: String) -> Result<()> {
     user_account.bump = *ctx.bumps.get("user_account").unwrap();
     user_account.authority = authority.key();
     user_account.time = Clock::get()?.unix_timestamp;
+    user_account.image = image;
 
     Ok(())
 }

@@ -16,10 +16,16 @@ pub struct UpdateUser<'info> {
     pub system_program: Program<'info, System>,
 }
 
-pub fn update_user(ctx: Context<UpdateUser>, username: String) -> Result<()> {
+pub fn update_user(ctx: Context<UpdateUser>, username: String, image: String) -> Result<()> {
     let user_account = &mut ctx.accounts.user_account;
 
-    user_account.username = username;
+    if username.len() > 0 {
+        user_account.username = username;
+    }
+
+    if image.len() > 0 {
+        user_account.image = image;
+    }
 
     Ok(())
 }

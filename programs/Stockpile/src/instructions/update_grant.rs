@@ -28,6 +28,7 @@ pub fn update_grant(
     discord: String,
     telegram: String,
     repo: String,
+    image: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let grant = &mut ctx.accounts.grant;
@@ -57,6 +58,10 @@ pub fn update_grant(
 
         if repo.len() > 0 {
             grant.repo = repo;
+        }
+
+        if image.len() > 0 {
+            grant.image_link = image;
         }
     }
 

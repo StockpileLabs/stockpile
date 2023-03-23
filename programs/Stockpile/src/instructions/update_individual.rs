@@ -26,6 +26,7 @@ pub fn update_individual(
     twitter: String,
     discord: String,
     telegram: String,
+    image: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let individual = &mut ctx.accounts.individual;
@@ -47,6 +48,10 @@ pub fn update_individual(
 
         if discord.len() > 0 {
             individual.discord = discord;
+        }
+
+        if image.len() > 0 {
+            individual.image_link = image;
         }
 
     }

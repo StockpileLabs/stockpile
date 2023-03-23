@@ -8,8 +8,9 @@ pub struct User {
     pub contributions: u8,
     pub bump: u8,
     pub time: i64,
+    pub image: String,
 }
 
 impl User {
-    pub const LEN: usize = 8 + 8 + 4 + 256;
+    pub const LEN: usize = 8 + 8 + 4 + 256 + 32;
 }

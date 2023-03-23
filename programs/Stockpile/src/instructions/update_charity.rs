@@ -28,6 +28,7 @@ pub fn update_charity(
     discord: String,
     telegram: String,
     filing: String,
+    image: String,
 ) -> Result<()> {
     let beneficiary = &mut ctx.accounts.beneficiary;
     let charity = &mut ctx.accounts.charity;
@@ -58,6 +59,10 @@ pub fn update_charity(
 
         if filing.len() > 0 {
             charity.filing_link = filing;
+        }
+
+        if image.len() > 0 {
+            charity.image_link = image;
         }
     }
 
